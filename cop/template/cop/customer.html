@@ -1,0 +1,51 @@
+{%extends 'cop/main.html'%}
+{%block content%}
+<div class="row">
+<table class="table table-dark table-striped">
+  <tr>
+    <th>customer</th>
+    <th>contact information</th>
+    <th>total orders</th>
+  </tr>
+  <tr>
+    <td><button type="button">update customer</button></td>
+    <td><p>email:{{c.email}}</p></td>
+    <td>{{o.count}}</td>
+  </tr>
+  <tr>
+    <td><button type="button">delete customer</button></td>
+    <td><p>phone:{{c.phone}}</p></td>
+    <td></td>
+  </tr>
+</table>
+</div>
+<!--  -->
+<div class="row">
+<button type="button">search</button>
+</div>
+<!--  -->
+<div class="row">
+<table class="table table-dark table-striped">
+  <tr>
+
+    <th>product</th>
+    <th>category</th>
+    <th>date orederd</th>
+    <th>status</th>
+    <th>update</th>
+    <th>remove</th>
+  </tr>
+  {%for i in o%}
+  <tr>
+
+    <td>{{i.product}}</td>
+    <td>{{i.product.category}}</td>
+    <td>{{i.date_created}}</td>
+    <td>{{i.status}}</td>
+    <td><a href="{%url 'uo' i.id%}" class="btn btn-info">update</a></td>
+    <td><a href="{%url 'del' i.id%}" class="btn btn-danger">remove</a></td>
+  </tr>
+  {%endfor%}
+</table>
+</div>
+{%endblock%}
